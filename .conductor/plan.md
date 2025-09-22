@@ -59,9 +59,9 @@
 - [x] Add API key handling via environment variables.
 
 ### Task 3.2: Hotel Search Service
-- [ ] Choose a hotel search API.
-- [ ] Create `backend/app/services/hotel_service.py`.
-- [ ] Write a function to call the hotel API.
+- [x] Choose a hotel search API.
+- [x] Create `backend/app/services/hotel_service.py`.
+- [x] Write a function to call the hotel API.
 
 ### Task 3.3: Integrate Services into Main Endpoint
 - [ ] In the `/plan` endpoint, replace the mock data logic.
