@@ -6,9 +6,9 @@
 
 **Current Phase:** Phase 2 - Basic Frontend
 
-**Current Task:** Task 2.1: Create HTML Structure
+**Current Task:** Task 2.3: Implement Frontend Logic
 
-**Next Action:** Begin implementation of Task 2.1.
+**Next Action:** Begin implementation of Task 2.3.
 
 ## Progress Summary
 
@@ -19,6 +19,8 @@
 - **Task 1.3: Create Pydantic Models**
 - **Task 1.4: Implement Core API Endpoint**
 - **Task 1.5: Setup Testing Framework**
+- **Task 2.1: Create HTML Structure**
+- **Task 2.2: Add Basic Styling**
 
 ### In Progress
 - None.

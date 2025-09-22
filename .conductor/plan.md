@@ -36,13 +36,13 @@
 ## Phase 2: Basic Frontend
 
 ### Task 2.1: Create HTML Structure
-- [ ] Create `frontend/index.html`.
-- [ ] Add a form to collect user input for destination, start date, and end date.
-- [ ] Add a submit button and a container to display results.
+- [x] Create `frontend/index.html`.
+- [x] Add a form to collect user input for destination, start date, and end date.
+- [x] Add a submit button and a container to display results.
 
 ### Task 2.2: Add Basic Styling
-- [ ] Create `frontend/css/style.css`.
-- [ ] Add simple, clean styles for the form and results container.
+- [x] Create `frontend/css/style.css`.
+- [x] Add simple, clean styles for the form and results container.
 
 ### Task 2.3: Implement Frontend Logic
 - [ ] Create `frontend/js/main.js`.
