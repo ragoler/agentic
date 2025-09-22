@@ -88,10 +88,10 @@
 - [x] Implement basic error handling and display messages to the user if the API fails.
 
 ### Task 4.3: Integrate Gemini for Trip Summaries
-- [ ] Create a new `SummaryAgent` that uses the Gemini API.
-- [ ] Update the `OrchestratorAgent` to call the `SummaryAgent` after gathering flight and hotel data.
-- [ ] Add the generated summary to the `TripPlan` model and the API response.
-- [ ] Update the frontend to display the new summary.
+- [x] Create a new `SummaryAgent` that uses the Gemini API.
+- [x] Update the `OrchestratorAgent` to call the `SummaryAgent` after gathering flight and hotel data.
+- [x] Add the generated summary to the `TripPlan` model and the API response.
+- [x] Update the frontend to display the new summary.
 
 ### Task 4.4: Add Attraction & Transport (Optional)
 - [ ] If time permits, integrate a third service for attractions or transportation.

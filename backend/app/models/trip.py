@@ -20,5 +20,6 @@ class HotelOption(BaseModel):
     rating: float
 
 class TripPlan(BaseModel):
+    summary: str
     live_flights_nearby: List[LiveFlightState]
     hotels: List[HotelOption]

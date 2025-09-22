@@ -22,6 +22,7 @@ async def test_plan_trip_integration(mock_plan_trip):
     """
     # Setup a mock return value from the orchestrator
     mock_plan = TripPlan(
+        summary="Orchestrated Summary",
         live_flights_nearby=[
             {"callsign": "ORCHESTRA1", "origin_country": "Orchestraland", "longitude": 1, "latitude": 1, "on_ground": False}
         ],
@@ -43,6 +44,7 @@ async def test_plan_trip_integration(mock_plan_trip):
     data = response.json()
     
     # Verify that the data from the mocked orchestrator was returned
+    assert data["summary"] == "Orchestrated Summary"
     assert data["live_flights_nearby"][0]["callsign"] == "ORCHESTRA1"
     assert data["hotels"][0]["name"] == "Orchestra Hotel"
 

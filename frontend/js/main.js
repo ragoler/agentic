@@ -52,7 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function displayResults(plan, destination) {
-        let html = `<h3>Live Flights Near ${destination}</h3>`;
+        let html = `<h2>Your Trip to ${destination}</h2>`;
+        html += `<p class="summary">${plan.summary}</p>`;
+
+        html += `<h3>Live Flights Near ${destination}</h3>`;
         if (plan.live_flights_nearby && plan.live_flights_nearby.length > 0) {
             html += '<ul>';
             plan.live_flights_nearby.forEach(flight => {
@@ -76,4 +79,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resultsContent.innerHTML = html;
     }
+
 });

@@ -6,9 +6,9 @@
 
 **Current Phase:** Phase 4 - Refinement and Finalization
 
-**Current Task:** Task 4.3: Add Attraction & Transport (Optional)
+**Current Task:** Task 4.4: Add Attraction & Transport (Optional)
 
-**Next Action:** Begin implementation of Task 4.3.
+**Next Action:** Decide whether to implement Task 4.4 or move to 4.5.
 
 ## Progress Summary
 
@@ -19,12 +19,12 @@
 - **Phase 3: External API Integration** (Tasks 3.1 - 3.4)
 - **Task 4.1: Refactor to Explicit Agentic Architecture**
 - **Task 4.2: Improve Frontend Display**
+- **Task 4.3: Integrate Gemini for Trip Summaries**
 
 ### In Progress
 - None.
 
 ### Upcoming
-- **Task 4.3: Integrate Gemini for Trip Summaries**
 - Phase 4: Refinement and Finalization
 
 ## Blockers
