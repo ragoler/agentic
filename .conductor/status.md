@@ -6,9 +6,9 @@
 
 **Current Phase:** Phase 3 - External API Integration
 
-**Current Task:** Task 3.3: Integrate Services into Main Endpoint
+**Current Task:** Task 3.4: Testing with Mocks
 
-**Next Action:** Begin implementation of Task 3.3.
+**Next Action:** Begin implementation of Task 3.4.
 
 ## Progress Summary
 
@@ -18,6 +18,7 @@
 - **Phase 2: Basic Frontend** (Tasks 2.1 - 2.3)
 - **Task 3.1: Flight Search Service**
 - **Task 3.2: Hotel Search Service**
+- **Task 3.3: Integrate Services into Main Endpoint**
 
 ### In Progress
 - None.

@@ -1,21 +1,20 @@
+import asyncio
 from fastapi import APIRouter
-from app.models.trip import TripRequest, TripPlan, FlightOption, HotelOption
+from app.models.trip import TripRequest, TripPlan
+from app.services.flight_service import get_flights_for_destination
+from app.services.hotel_service import get_hotels_for_destination
 
 router = APIRouter()
 
 @router.post("/plan", response_model=TripPlan, tags=["Planning"])
 async def get_trip_plan(request: TripRequest):
     """
-    Accepts user's trip request and returns a mock trip plan.
+    Accepts user's trip request and returns a trip plan by calling external services.
     """
-    # Mock data for now
-    mock_flights = [
-        FlightOption(airline="Airline A", price=500.0, departure_time="10:00"),
-        FlightOption(airline="Airline B", price=550.0, departure_time="12:00"),
-    ]
-    mock_hotels = [
-        HotelOption(name="Hotel X", price_per_night=150.0, rating=4.5),
-        HotelOption(name="Hotel Y", price_per_night=200.0, rating=4.8),
-    ]
+    # Run the service calls concurrently
+    flight_task = get_flights_for_destination(request.destination)
+    hotel_task = get_hotels_for_destination(request.destination)
 
-    return TripPlan(flights=mock_flights, hotels=mock_hotels)
+    live_flights, hotels = await asyncio.gather(flight_task, hotel_task)
+
+    return TripPlan(live_flights_nearby=live_flights, hotels=hotels)

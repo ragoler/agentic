@@ -64,9 +64,9 @@
 - [x] Write a function to call the hotel API.
 
 ### Task 3.3: Integrate Services into Main Endpoint
-- [ ] In the `/plan` endpoint, replace the mock data logic.
-- [ ] Call the `flight_service` and `hotel_service` asynchronously.
-- [ ] Combine the results into a single response.
+- [x] In the `/plan` endpoint, replace the mock data logic.
+- [x] Call the `flight_service` and `hotel_service` asynchronously.
+- [x] Combine the results into a single response.
 
 ### Task 3.4: Testing with Mocks
 - [ ] Write unit tests for the `flight_service` and `hotel_service`, mocking the external API calls.
