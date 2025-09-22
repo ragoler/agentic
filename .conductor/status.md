@@ -4,11 +4,11 @@
 
 **Project Status:** In Progress
 
-**Current Phase:** Phase 1 - Project Setup & Core Backend
+**Current Phase:** Phase 2 - Basic Frontend
 
-**Current Task:** Task 1.5: Setup Testing Framework
+**Current Task:** Task 2.1: Create HTML Structure
 
-**Next Action:** Begin implementation of Task 1.5.
+**Next Action:** Begin implementation of Task 2.1.
 
 ## Progress Summary
 
@@ -18,12 +18,12 @@
 - **Task 1.2: Setup FastAPI Application**
 - **Task 1.3: Create Pydantic Models**
 - **Task 1.4: Implement Core API Endpoint**
+- **Task 1.5: Setup Testing Framework**
 
 ### In Progress
 - None.
 
 ### Upcoming
-- Phase 1: Project Setup & Core Backend
 - Phase 2: Basic Frontend
 - Phase 3: External API Integration
 - Phase 4: Refinement and Finalization

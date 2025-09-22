@@ -28,10 +28,10 @@
 - [x] Initially, have it accept a `TripRequest` and return mock data.
 
 ### Task 1.5: Setup Testing Framework
-- [ ] Add `pytest` and `httpx` to `requirements.txt`.
-- [ ] Configure `pytest`.
-- [ ] Write a simple test for the `/health` endpoint.
-- [ ] Write a test for the `/plan` endpoint using mock data.
+- [x] Add `pytest` and `httpx` to `requirements.txt`.
+- [x] Configure `pytest`.
+- [x] Write a simple test for the `/health` endpoint.
+- [x] Write a test for the `/plan` endpoint using mock data.
 
 ## Phase 2: Basic Frontend
 
