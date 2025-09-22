@@ -6,9 +6,9 @@
 
 **Current Phase:** Phase 3 - External API Integration
 
-**Current Task:** Task 3.1: Flight Search Service
+**Current Task:** Task 3.2: Hotel Search Service
 
-**Next Action:** Begin implementation of Task 3.1.
+**Next Action:** Begin implementation of Task 3.2.
 
 ## Progress Summary
 
@@ -16,6 +16,7 @@
 - All planning and `.conductor` methodology files have been created.
 - **Phase 1: Project Setup & Core Backend** (Tasks 1.1 - 1.5)
 - **Phase 2: Basic Frontend** (Tasks 2.1 - 2.3)
+- **Task 3.1: Flight Search Service**
 
 ### In Progress
 - None.

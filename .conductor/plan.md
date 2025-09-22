@@ -53,10 +53,10 @@
 ## Phase 3: External API Integration
 
 ### Task 3.1: Flight Search Service
-- [ ] Choose a flight search API (e.g., a free test API).
-- [ ] Create `backend/app/services/flight_service.py`.
-- [ ] Write a function to call the flight API using `httpx`, passing the user's criteria.
-- [ ] Add API key handling via environment variables.
+- [x] Choose a flight search API (e.g., a free test API).
+- [x] Create `backend/app/services/flight_service.py`.
+- [x] Write a function to call the flight API using `httpx`, passing the user's criteria.
+- [x] Add API key handling via environment variables.
 
 ### Task 3.2: Hotel Search Service
 - [ ] Choose a hotel search API.
