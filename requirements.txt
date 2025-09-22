@@ -5,3 +5,4 @@ pytest
 pytest-asyncio
 google-generativeai
 pydantic-settings
+python-dotenv

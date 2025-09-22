@@ -9,12 +9,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(tripForm);
         const data = {
+            origin: formData.get('origin'),
             destination: formData.get('destination'),
             start_date: formData.get('start_date'),
             end_date: formData.get('end_date'),
         };
 
-        if (!data.destination || !data.start_date || !data.end_date) {
+        if (!data.origin || !data.destination || !data.start_date || !data.end_date) {
             resultsContent.innerHTML = '<p class="error">Please fill out all fields.</p>';
             resultsContainer.style.display = 'block';
             return;
@@ -36,11 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!response.ok) {
                 const errorData = await response.json().catch(() => ({ detail: `HTTP error! status: ${response.status}` }));
-                throw new Error(errorData.detail);
+                // Stringify the detail to make it readable
+                const errorMessage = typeof errorData.detail === 'object' ? JSON.stringify(errorData.detail) : errorData.detail;
+                throw new Error(errorMessage);
             }
 
             const tripPlan = await response.json();
-            displayResults(tripPlan, data.destination);
+            displayResults(tripPlan, data.origin, data.destination);
 
         } catch (error) {
             console.error('Error planning trip:', error);
@@ -51,8 +54,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function displayResults(plan, destination) {
-        let html = `<h2>Your Trip to ${destination}</h2>`;
+    function displayResults(plan, origin, destination) {
+        let html = `<h2>Your Trip from ${origin} to ${destination}</h2>`;
         html += `<p class="summary">${plan.summary}</p>`;
 
         html += `<h3>Live Flights Near ${destination}</h3>`;
@@ -79,5 +82,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         resultsContent.innerHTML = html;
     }
+
 
 });

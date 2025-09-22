@@ -27,6 +27,7 @@ class OrchestratorAgent:
         live_flights, hotels = await asyncio.gather(flight_task, hotel_task)
 
         summary = await self.summary_agent.generate_summary(
+            origin=request.origin,
             destination=request.destination,
             flights=live_flights,
             hotels=hotels

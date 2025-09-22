@@ -3,9 +3,10 @@ from datetime import date
 from typing import List, Optional
 
 class TripRequest(BaseModel):
-    destination: str = Field(..., example="Paris, France", description="The desired travel destination.")
-    start_date: date = Field(..., example="2025-12-19", description="The start date of the trip.")
-    end_date: date = Field(..., example="2025-12-26", description="The end date of the trip.")
+    origin: str = Field(..., json_schema_extra={'example': "New York, USA"}, description="The starting point of the trip.")
+    destination: str = Field(..., json_schema_extra={'example': "Paris, France"}, description="The desired travel destination.")
+    start_date: date = Field(..., json_schema_extra={'example': "2025-12-19"}, description="The start date of the trip.")
+    end_date: date = Field(..., json_schema_extra={'example': "2025-12-26"}, description="The end date of the trip.")
 
 class LiveFlightState(BaseModel):
     callsign: str

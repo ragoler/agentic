@@ -33,6 +33,7 @@ async def test_plan_trip_integration(mock_plan_trip):
     mock_plan_trip.return_value = mock_plan
 
     payload = {
+        "origin": "Test City",
         "destination": "Orchestra City",
         "start_date": "2026-02-01",
         "end_date": "2026-02-08"
