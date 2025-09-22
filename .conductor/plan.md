@@ -45,10 +45,10 @@
 - [x] Add simple, clean styles for the form and results container.
 
 ### Task 2.3: Implement Frontend Logic
-- [ ] Create `frontend/js/main.js`.
-- [ ] Write JavaScript to capture form data on submit.
-- [ ] Use the `fetch` API to send the data to the backend's `/plan` endpoint.
-- [ ] Write a function to display the results returned from the backend.
+- [x] Create `frontend/js/main.js`.
+- [x] Write JavaScript to capture form data on submit.
+- [x] Use the `fetch` API to send the data to the backend's `/plan` endpoint.
+- [x] Write a function to display the results returned from the backend.
 
 ## Phase 3: External API Integration
 
