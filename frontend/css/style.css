@@ -63,8 +63,32 @@ button:hover {
 #results-container {
     border-top: 1px solid #eee;
     padding-top: 20px;
+    display: none; /* Initially hidden */
 }
 
 #results-content {
     margin-top: 10px;
+}
+
+#results-content ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#results-content li {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border-left: 3px solid #3498db;
+}
+
+.loading, .error {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+}
+
+.error {
+    color: #e74c3c;
 }

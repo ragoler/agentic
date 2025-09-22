@@ -75,9 +75,9 @@
 ## Phase 4: Refinement and Finalization
 
 ### Task 4.1: Improve Frontend Display
-- [ ] Format the JSON results from the API into a human-readable display.
-- [ ] Add loading indicators while waiting for the API response.
-- [ ] Implement basic error handling and display messages to the user if the API fails.
+- [x] Format the JSON results from the API into a human-readable display.
+- [x] Add loading indicators while waiting for the API response.
+- [x] Implement basic error handling and display messages to the user if the API fails.
 
 ### Task 4.2: Add Attraction & Transport (Optional)
 - [ ] If time permits, integrate a third service for attractions or transportation, following the pattern from Phase 3.

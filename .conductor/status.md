@@ -6,9 +6,9 @@
 
 **Current Phase:** Phase 4 - Refinement and Finalization
 
-**Current Task:** Task 4.1: Improve Frontend Display
+**Current Task:** Task 4.2: Add Attraction & Transport (Optional)
 
-**Next Action:** Begin implementation of Task 4.1.
+**Next Action:** Begin implementation of Task 4.2.
 
 ## Progress Summary
 
@@ -17,6 +17,7 @@
 - **Phase 1: Project Setup & Core Backend** (Tasks 1.1 - 1.5)
 - **Phase 2: Basic Frontend** (Tasks 2.1 - 2.3)
 - **Phase 3: External API Integration** (Tasks 3.1 - 3.4)
+- **Task 4.1: Improve Frontend Display**
 
 ### In Progress
 - None.

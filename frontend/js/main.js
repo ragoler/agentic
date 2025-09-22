@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const tripForm = document.getElementById('trip-form');
     const resultsContent = document.getElementById('results-content');
+    const resultsContainer = document.getElementById('results-container');
     const submitButton = document.getElementById('submit-button');
 
     tripForm.addEventListener('submit', async (event) => {
@@ -13,13 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
             end_date: formData.get('end_date'),
         };
 
-        // Basic validation
         if (!data.destination || !data.start_date || !data.end_date) {
-            resultsContent.innerHTML = '<p style="color: red;">Please fill out all fields.</p>';
+            resultsContent.innerHTML = '<p class="error">Please fill out all fields.</p>';
+            resultsContainer.style.display = 'block';
             return;
         }
 
-        resultsContent.innerHTML = '<p>Planning your trip...</p>';
+        resultsContent.innerHTML = '<p class="loading">Searching for the best options...</p>';
+        resultsContainer.style.display = 'block';
         submitButton.disabled = true;
         submitButton.textContent = 'Planning...';
 
@@ -33,7 +35,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                const errorData = await response.json();
+                throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
             }
 
             const tripPlan = await response.json();
@@ -41,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         } catch (error) {
             console.error('Error planning trip:', error);
-            resultsContent.innerHTML = `<p style="color: red;">An error occurred while planning your trip. Please check the console for details.</p>`;
+            resultsContent.innerHTML = `<p class="error">An error occurred: ${error.message}</p>`;
         } finally {
             submitButton.disabled = false;
             submitButton.textContent = 'Plan Trip';
@@ -49,22 +52,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function displayResults(plan) {
-        let html = '<h3>Flights</h3>';
-        if (plan.flights && plan.flights.length > 0) {
+        let html = `<h3>Live Flights Near ${document.getElementById('destination').value}</h3>`;
+        if (plan.live_flights_nearby && plan.live_flights_nearby.length > 0) {
             html += '<ul>';
-            plan.flights.forEach(flight => {
-                html += `<li>${flight.airline} - $${flight.price} (Departs: ${flight.departure_time})</li>`;
+            plan.live_flights_nearby.forEach(flight => {
+                html += `<li><strong>${flight.callsign}</strong> (from ${flight.origin_country})</li>`;
             });
             html += '</ul>';
         } else {
-            html += '<p>No flights found.</p>';
+            html += '<p>No live flights found nearby.</p>';
         }
 
-        html += '<h3>Hotels</h3>';
+        html += '<h3>Hotel Options</h3>';
         if (plan.hotels && plan.hotels.length > 0) {
             html += '<ul>';
             plan.hotels.forEach(hotel => {
-                html += `<li>${hotel.name} - $${hotel.price_per_night}/night (Rating: ${hotel.rating})</li>`;
+                html += `<li><strong>${hotel.name}</strong> - ${hotel.price_per_night}/night (Rating: ${hotel.rating})</li>`;
             });
             html += '</ul>';
         } else {
