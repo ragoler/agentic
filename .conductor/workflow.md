@@ -13,6 +13,8 @@
 3.  **Verify:** Ensure the implementation works as expected and that all tests pass.
 4.  **Document Deviations:** If the implementation differs from the architecture, update `architecture.md` and add a note explaining the change.
 5.  **Mark Done:** Edit `plan.md` and change the task from `[ ]` to `[x]`.
+6.  **Update Status:** Modify `status.md` to reflect the completion of the task.
+7.  **Commit and Push:** Follow the Git Workflow to commit and push all changes.
 
 ## Development Commands
 
@@ -40,6 +42,20 @@ cd backend
 pytest
 ```
 
+## Git Workflow
+After completing a task and updating the plan and status files:
+
+```bash
+# Stage all changes
+git add .
+
+# Commit the changes (example message)
+git commit -m "feat: Complete Task X.X - Description of task"
+
+# Push to the remote repository
+git push origin main
+```
+
 ## Commit Guidelines
 - Use descriptive, present-tense commit messages (e.g., `feat: Add flight search endpoint`).
-- Group related changes into a single commit.
+- Group related changes for a single task into one commit.

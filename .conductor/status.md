@@ -6,15 +6,18 @@
 
 **Current Phase:** Phase 1 - Project Setup & Core Backend
 
-**Current Task:** Task 1.2: Setup FastAPI Application
+**Current Task:** Task 1.5: Setup Testing Framework
 
-**Next Action:** Begin implementation of Task 1.2.
+**Next Action:** Begin implementation of Task 1.5.
 
 ## Progress Summary
 
 ### Completed
 - All planning and `.conductor` methodology files have been created.
 - **Task 1.1: Initialize Project Structure**
+- **Task 1.2: Setup FastAPI Application**
+- **Task 1.3: Create Pydantic Models**
+- **Task 1.4: Implement Core API Endpoint**
 
 ### In Progress
 - None.
