@@ -4,11 +4,11 @@
 
 **Project Status:** In Progress
 
-**Current Phase:** Phase 3 - External API Integration
+**Current Phase:** Phase 4 - Refinement and Finalization
 
-**Current Task:** Task 3.4: Testing with Mocks
+**Current Task:** Task 4.1: Improve Frontend Display
 
-**Next Action:** Begin implementation of Task 3.4.
+**Next Action:** Begin implementation of Task 4.1.
 
 ## Progress Summary
 
@@ -16,15 +16,12 @@
 - All planning and `.conductor` methodology files have been created.
 - **Phase 1: Project Setup & Core Backend** (Tasks 1.1 - 1.5)
 - **Phase 2: Basic Frontend** (Tasks 2.1 - 2.3)
-- **Task 3.1: Flight Search Service**
-- **Task 3.2: Hotel Search Service**
-- **Task 3.3: Integrate Services into Main Endpoint**
+- **Phase 3: External API Integration** (Tasks 3.1 - 3.4)
 
 ### In Progress
 - None.
 
 ### Upcoming
-- Phase 3: External API Integration
 - Phase 4: Refinement and Finalization
 
 ## Blockers

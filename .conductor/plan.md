@@ -69,8 +69,8 @@
 - [x] Combine the results into a single response.
 
 ### Task 3.4: Testing with Mocks
-- [ ] Write unit tests for the `flight_service` and `hotel_service`, mocking the external API calls.
-- [ ] Update the integration test for the `/plan` endpoint to use these mocks.
+- [x] Write unit tests for the `flight_service` and `hotel_service`, mocking the external API calls.
+- [x] Update the integration test for the `/plan` endpoint to use these mocks.
 
 ## Phase 4: Refinement and Finalization
 
