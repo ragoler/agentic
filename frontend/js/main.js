@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (!response.ok) {
-                const errorData = await response.json();
-                throw new Error(errorData.detail || `HTTP error! status: ${response.status}`);
+                const errorData = await response.json().catch(() => ({ detail: `HTTP error! status: ${response.status}` }));
+                throw new Error(errorData.detail);
             }
 
             const tripPlan = await response.json();
-            displayResults(tripPlan);
+            displayResults(tripPlan, data.destination);
 
         } catch (error) {
             console.error('Error planning trip:', error);
@@ -51,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    function displayResults(plan) {
-        let html = `<h3>Live Flights Near ${document.getElementById('destination').value}</h3>`;
+    function displayResults(plan, destination) {
+        let html = `<h3>Live Flights Near ${destination}</h3>`;
         if (plan.live_flights_nearby && plan.live_flights_nearby.length > 0) {
             html += '<ul>';
             plan.live_flights_nearby.forEach(flight => {

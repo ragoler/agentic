@@ -8,6 +8,7 @@ An AI-powered agentic system, based on the Agent Development Kit (ADK) standard,
 ### Backend
 - **Framework**: Python with FastAPI
 - **Agent Framework**: ADK Principles (Orchestrator and Specialized Agents)
+- **LLM**: Google Gemini for generating summaries
 - **API Gateway**: Managed Connectivity Platform (MCP) for all external API access
 - **Data Validation**: Pydantic
 - **External API Client**: HTTPX for asynchronous calls via MCP
@@ -29,8 +30,7 @@ The system is composed of a central orchestrator agent that manages a team of sp
 - **Specialized Agents**: Each agent is an expert in a specific domain:
     - **Flight Agent**: Searches for flight options.
     - **Hotel Agent**: Finds accommodation.
-    - **Attraction Agent**: Discovers local points of interest.
-    - **Transportation Agent**: Identifies local transport options.
+    - **Summary Agent (Gemini)**: Generates a natural language summary of the trip.
 
 ## Managed Connectivity Platform (MCP)
 All communication with external, third-party APIs (e.g., Skyscanner, Booking.com) is routed through a centralized MCP Gateway.
