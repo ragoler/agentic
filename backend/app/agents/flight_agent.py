@@ -1,7 +1,4 @@
-import httpx
-from fastapi import HTTPException
-
-OPENSKY_API_URL = "https://opensky-network.org/api/states/all"
+from app.mcp_gateway.gateway import MCPGateway
 
 GEOCODE_MOCK = {
     "paris, france": (48.8566, 2.3522),
@@ -11,47 +8,36 @@ GEOCODE_MOCK = {
 
 class FlightAgent:
     """
-    An agent specialized in finding flight information.
+    An agent specialized in finding and processing flight information.
     """
+    def __init__(self, mcp: MCPGateway):
+        self.mcp = mcp
+
     async def search(self, destination: str):
         """
-        Searches for live flights near a given destination.
+        Searches for live flights by calling the MCPGateway.
         """
         destination_lower = destination.lower()
         if destination_lower not in GEOCODE_MOCK:
             return []
         
         lat, lon = GEOCODE_MOCK[destination_lower]
-        return await self._get_flights_near_coordinates(lat, lon)
-
-    async def _get_flights_near_coordinates(self, lat: float, lon: float):
-        params = {
-            "lamin": lat - 2.0,
-            "lamax": lat + 2.0,
-            "lomin": lon - 2.0,
-            "lomax": lon + 2.0,
-        }
         
-        async with httpx.AsyncClient() as client:
-            try:
-                response = await client.get(OPENSKY_API_URL, params=params, timeout=10.0)
-                response.raise_for_status()
-                data = response.json()
-                
-                flights = []
-                if data.get("states"):
-                    for state in data["states"][:10]:
-                        flights.append({
-                            "callsign": state[1].strip() or "N/A",
-                            "origin_country": state[2],
-                            "longitude": state[5],
-                            "latitude": state[6],
-                            "on_ground": state[8],
-                        })
-                return flights
-            except httpx.RequestError as exc:
-                print(f"An error occurred while requesting {exc.request.url!r}.")
-                raise HTTPException(status_code=503, detail="Error communicating with the flight data service.")
-            except httpx.HTTPStatusError as exc:
-                print(f"Error response {exc.response.status_code} while requesting {exc.request.url!r}.")
-                raise HTTPException(status_code=503, detail="Received an error from the flight data service.")
+        # Delegate the external call to the MCP
+        raw_data = await self.mcp.get_live_flights(lat, lon)
+        
+        # Process the data into the desired format
+        return self._process_flight_data(raw_data)
+
+    def _process_flight_data(self, data):
+        flights = []
+        if data and data.get("states"):
+            for state in data["states"][:10]:
+                flights.append({
+                    "callsign": state[1].strip() or "N/A",
+                    "origin_country": state[2],
+                    "longitude": state[5],
+                    "latitude": state[6],
+                    "on_ground": state[8],
+                })
+        return flights

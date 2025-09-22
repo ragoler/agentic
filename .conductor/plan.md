@@ -82,21 +82,28 @@
 - [x] Remove the old `services` directory.
 - [x] Update all tests to reflect the new agent-based structure.
 
-### Task 4.2: Improve Frontend Display
-- [x] Format the JSON results from the API into a human-readable display.
-- [x] Add loading indicators while waiting for the API response.
-- [x] Implement basic error handling and display messages to the user if the API fails.
+### Task 4.2: Refactor to Explicit MCP Architecture
+- [x] Create `MCPGateway` class to handle all external API calls.
+- [x] Move `httpx` logic from `FlightAgent` to `MCPGateway`.
+- [x] Move `genai` logic from `SummaryAgent` to `MCPGateway`.
+- [x] Refactor agents to use the `MCPGateway` via dependency injection.
+- [x] Update tests to mock the `MCPGateway`.
 
-### Task 4.3: Integrate Gemini for Trip Summaries
-- [x] Create a new `SummaryAgent` that uses the Gemini API.
-- [x] Update the `OrchestratorAgent` to call the `SummaryAgent` after gathering flight and hotel data.
-- [x] Add the generated summary to the `TripPlan` model and the API response.
-- [x] Update the frontend to display the new summary.
+### Task 4.3: Improve Frontend Display
+- [ ] Format the JSON results from the API into a human-readable display.
+- [ ] Add loading indicators while waiting for the API response.
+- [ ] Implement basic error handling and display messages to the user if the API fails.
 
-### Task 4.4: Add Attraction & Transport (Optional)
+### Task 4.4: Integrate Gemini for Trip Summaries
+- [ ] Create a new `SummaryAgent` that uses the Gemini API.
+- [ ] Update the `OrchestratorAgent` to call the `SummaryAgent` after gathering flight and hotel data.
+- [ ] Add the generated summary to the `TripPlan` model and the API response.
+- [ ] Update the frontend to display the new summary.
+
+### Task 4.5: Add Attraction & Transport (Optional)
 - [ ] If time permits, integrate a third service for attractions or transportation.
 
-### Task 4.5: Final Review
+### Task 4.6: Final Review
 - [ ] Review all code against the `code_styleguide.md`.
 - [ ] Ensure all tests are passing.
 - [ ] Write a `README.md` with instructions on how to set up and run the project.

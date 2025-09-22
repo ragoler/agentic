@@ -1,35 +1,22 @@
-import google.generativeai as genai
-from app.core.config import settings
+from app.mcp_gateway.gateway import MCPGateway
 from app.models.trip import LiveFlightState, HotelOption
 from typing import List
 
 class SummaryAgent:
     """
-    An agent that uses the Gemini LLM to generate trip summaries.
+    An agent that uses the MCPGateway to generate trip summaries.
     """
-    def __init__(self):
-        if settings.GEMINI_API_KEY == "YOUR_API_KEY_HERE":
-            print("Warning: GEMINI_API_KEY is not set. SummaryAgent will return a mock summary.")
-            self.model = None
-        else:
-            genai.configure(api_key=settings.GEMINI_API_KEY)
-            self.model = genai.GenerativeModel('gemini-pro')
+    def __init__(self, mcp: MCPGateway):
+        self.mcp = mcp
 
     async def generate_summary(self, destination: str, flights: List[LiveFlightState], hotels: List[HotelOption]) -> str:
         """
-        Generates a natural language summary of the trip plan.
+        Generates a natural language summary by creating a prompt and calling the MCP.
         """
-        if not self.model:
-            return "This is a mock summary because the Gemini API key is not configured."
-
         prompt = self._create_prompt(destination, flights, hotels)
         
-        try:
-            response = await self.model.generate_content_async(prompt)
-            return response.text
-        except Exception as e:
-            print(f"Error generating summary with Gemini: {e}")
-            return "There was an error generating the trip summary."
+        # Delegate the external call to the MCP
+        return await self.mcp.generate_text_summary(prompt)
 
     def _create_prompt(self, destination: str, flights: List[LiveFlightState], hotels: List[HotelOption]) -> str:
         flight_details = "\n".join([f"- Flight {f.callsign} from {f.origin_country}" for f in flights]) if flights else "No live flights found nearby."
