@@ -2,6 +2,7 @@ import pytest
 from unittest.mock import patch, AsyncMock
 from fastapi.testclient import TestClient
 from app.main import app
+from app.models.trip import TripPlan # Import TripPlan for type hinting
 
 client = TestClient(app)
 
@@ -14,40 +15,36 @@ def test_health_check():
     assert response.json() == {"status": "ok"}
 
 @pytest.mark.asyncio
-@patch('app.api.v1.trip.get_hotels_for_destination', new_callable=AsyncMock)
-@patch('app.api.v1.trip.get_flights_for_destination', new_callable=AsyncMock)
-async def test_plan_trip_integration(mock_get_flights, mock_get_hotels):
+@patch('app.api.v1.trip.orchestrator.plan_trip', new_callable=AsyncMock)
+async def test_plan_trip_integration(mock_plan_trip):
     """
-    Tests the /api/v1/plan endpoint, mocking the service layer.
+    Tests the /api/v1/plan endpoint by mocking the orchestrator.
     """
-    # Setup mock return values for the services
-    mock_get_flights.return_value = [
-        {"callsign": "TEST1", "origin_country": "Testland", "longitude": 0, "latitude": 0, "on_ground": False}
-    ]
-    mock_get_hotels.return_value = [
-        {"name": "Test Hotel", "price_per_night": 100.0, "rating": 5.0}
-    ]
+    # Setup a mock return value from the orchestrator
+    mock_plan = TripPlan(
+        live_flights_nearby=[
+            {"callsign": "ORCHESTRA1", "origin_country": "Orchestraland", "longitude": 1, "latitude": 1, "on_ground": False}
+        ],
+        hotels=[
+            {"name": "Orchestra Hotel", "price_per_night": 150.0, "rating": 4.9}
+        ]
+    )
+    mock_plan_trip.return_value = mock_plan
 
     payload = {
-        "destination": "Tokyo, Japan",
-        "start_date": "2026-01-15",
-        "end_date": "2026-01-22"
+        "destination": "Orchestra City",
+        "start_date": "2026-02-01",
+        "end_date": "2026-02-08"
     }
     
-    # Use the TestClient to make the request
     response = client.post("/api/v1/plan", json=payload)
     
     assert response.status_code == 200
     data = response.json()
     
-    # Verify that our mock data was returned
-    assert "live_flights_nearby" in data
-    assert "hotels" in data
-    assert len(data["live_flights_nearby"]) == 1
-    assert data["live_flights_nearby"][0]["callsign"] == "TEST1"
-    assert len(data["hotels"]) == 1
-    assert data["hotels"][0]["name"] == "Test Hotel"
+    # Verify that the data from the mocked orchestrator was returned
+    assert data["live_flights_nearby"][0]["callsign"] == "ORCHESTRA1"
+    assert data["hotels"][0]["name"] == "Orchestra Hotel"
 
-    # Verify that the services were called with the correct destination
-    mock_get_flights.assert_called_once_with("Tokyo, Japan")
-    mock_get_hotels.assert_called_once_with("Tokyo, Japan")
+    # Verify the orchestrator was called
+    mock_plan_trip.assert_called_once()

@@ -74,15 +74,23 @@
 
 ## Phase 4: Refinement and Finalization
 
-### Task 4.1: Improve Frontend Display
-- [x] Format the JSON results from the API into a human-readable display.
-- [x] Add loading indicators while waiting for the API response.
-- [x] Implement basic error handling and display messages to the user if the API fails.
+### Task 4.1: Refactor to Explicit Agentic Architecture
+- [x] Create `FlightAgent` and `HotelAgent` classes.
+- [x] Move logic from `services` to new agent classes.
+- [x] Create `OrchestratorAgent` to coordinate specialized agents.
+- [x] Update API endpoint to use the orchestrator.
+- [x] Remove the old `services` directory.
+- [x] Update all tests to reflect the new agent-based structure.
 
-### Task 4.2: Add Attraction & Transport (Optional)
+### Task 4.2: Improve Frontend Display
+- [ ] Format the JSON results from the API into a human-readable display.
+- [ ] Add loading indicators while waiting for the API response.
+- [ ] Implement basic error handling and display messages to the user if the API fails.
+
+### Task 4.3: Add Attraction & Transport (Optional)
 - [ ] If time permits, integrate a third service for attractions or transportation, following the pattern from Phase 3.
 
-### Task 4.3: Final Review
+### Task 4.4: Final Review
 - [ ] Review all code against the `code_styleguide.md`.
 - [ ] Ensure all tests are passing.
 - [ ] Write a `README.md` with instructions on how to set up and run the project.
